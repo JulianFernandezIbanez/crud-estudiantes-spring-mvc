@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+        <title>crud-estudiantes</title>
+    </head>
+    <body>
+        <h1>Listado de Estudiantes</h1>
+		<div>
+			<a th:href="@{/estudiantes/alta}">Dar de alta/modificacion a un estudiante</a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Primer Apellido</th>
+					<th>Segundo Apellido</th>
+					<th>Fecha de Matriculacion</th>
+					<th>Genero</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="estudiante : ${estudiantes}">
+					<td th:text="${estudiante.Nombre}"></td>
+					<td th:text="${estudiante.primerApellido}"></td>
+					<td th:text="${estudiante.segundoApellido}"></td>
+					<td th:text="${estudiante.fechaMatriculacion}"></td>
+					<td th:text="${estudiante.genero}"></td>
+				</tr>
+			</tbody>
+		</table>
+    </body>
+</html>

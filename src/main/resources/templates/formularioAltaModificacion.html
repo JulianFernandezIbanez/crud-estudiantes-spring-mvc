@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulario</title>
+    </head>
+    <body>
+        <h1>Formulario de Alta o Modificacion</h1>
+		<fieldset>
+			<legend>Formulario</legend>
+			<form th:action="@{/estudiantes/persistir}" method="post" th:object="${estudiante}">
+				<input type="hidden" th:field="*{id}">
+				<div>
+					<label for="nombre">Nombre: </label> 
+					<input type="text" id="nombre" th:field="*{nombre}" required>
+				</div>
+				<div>
+					<label for="primerApellido">Primer Apellido: </label> 
+					<input type="text" id="primerApellido" th:field="*{primerApellido}" required>
+				</div>
+				<div>
+					<label for="segundoApellido">Segundo Apellido: </label> 
+					<input type="text" id="segundoApellido" name="segundoApellido" th:field="*{segundoApellido}">
+				</div>
+				<div>
+					<label for="fechaAlta">Fecha de Matricualcion: </label> 
+					<input type="date" name="fechaAlta" id="fechaAlta" th:field="*{fechaMatriculacion}">
+				</div>
+				<div>
+					<fieldset>
+						<legend>Genero</legend>
+						<label for="hombre">Hombre</label><input type="radio" name="genero" id="hombre" value="HOMBRE" th:field="*{genero}">
+						<br>
+						<label for="mujer">Mujer</label><input type="radio" name="genero" id="mujer" value="MUJER" th:field="*{genero}">
+						<br>
+						<label for="otro">Otro</label><input type="radio" name="genero" id="otro" value="OTRO" th:field="*{genero}">
+					</fieldset>
+				</div>
+				<div>
+					<label for="facultades">Facultades</label>
+					<select id="facultades" name="facultad">
+						<option value=""></option>
+						<option th:each="facultad : ${facultades}" th:value="${facultad.id}" th:text="${facultad.nombre}"></option>
+					</select>
+				</div>
+				<div>
+					<label for="telefonos">Telefonos: </label> 
+					<input type="text" id="telefonos" name="numerostlf" placeholder="Mas de 1 separado por ;">
+				</div>
+				<div>
+					<label for="mail">Correos: </label> 
+					<input type="text" id="mail" name="mail" placeholder="Mas de 1 separado por ;">
+				</div>
+				<input type="submit" value="Alta/Modificacion">
+			</form>
+		</fieldset>
+    </body>
+</html>
