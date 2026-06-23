@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entities.Correo;
@@ -16,6 +17,7 @@ import com.example.entities.Telefono;
 import com.example.services.EstudianteService;
 import com.example.services.FacultadService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -51,10 +53,22 @@ public class EstudianteController {
     }
     
     @PostMapping("/persistir")
-    public String procesarFormularioAltaModificacion(@ModelAttribute Estudiante estudiante,
+    public String procesarFormularioAltaModificacion(
+        @Valid
+        @ModelAttribute Estudiante estudiante,
+        BindingResult result,
         @RequestParam(name = "numerostlf") String numtlf, 
-		@RequestParam(name = "mail") String emails) {
+		@RequestParam(name = "mail") String emails,
+        Model model) {
         
+        if (result.hasErrors()) {
+
+            model.addAttribute("facultades", facultadService.getAllFacultades());
+            
+            return "formularioAltaModificacion";
+
+        }
+
         LOG.info("Estudiante recibido :");
 		LOG.info(estudiante.toString());
 		LOG.info(numtlf);

@@ -62,7 +62,7 @@ public class CrudEstudiantesSpringMvcApplication implements CommandLineRunner {
 			.primerApellido("Perez")
 			.segundoApellido("Rodriguez")
 			.genero(Genero.HOMBRE)
-			.fechaMatriculacion(LocalDate.of(2026, 01, 01))
+			.fechaMatriculacion(LocalDate.now())
 			.facultad(facultad5)
 			.correos(Set.of(
 				Correo.builder()
@@ -90,7 +90,7 @@ public class CrudEstudiantesSpringMvcApplication implements CommandLineRunner {
 			.primerApellido("Martinez")
 			.segundoApellido("Aziaga")
 			.genero(Genero.MUJER)
-			.fechaMatriculacion(LocalDate.of(2026, 01, 01))
+			.fechaMatriculacion(LocalDate.now())
 			.facultad(facultad4)
 			.correos(Set.of(
 				Correo.builder()

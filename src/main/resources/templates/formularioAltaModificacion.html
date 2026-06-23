@@ -3,6 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Formulario</title>
+		<style>
+			.error{
+				color: red;
+				font-weight: bold;
+			}
+		</style>
     </head>
     <body>
         <h1>Formulario de Alta o Modificacion</h1>
@@ -13,18 +19,30 @@
 				<div>
 					<label for="nombre">Nombre: </label> 
 					<input type="text" id="nombre" th:field="*{nombre}" required>
+					<p th:if="${#fields.hasErrors('nombre')}" 
+						th:class="${#fields.hasErrors('nombre')} ? error"
+						th:errors="*{nombre}">Nombre Invalido</p>
 				</div>
 				<div>
 					<label for="primerApellido">Primer Apellido: </label> 
 					<input type="text" id="primerApellido" th:field="*{primerApellido}" required>
+					<p th:if="${#fields.hasErrors('primerApellido')}" 
+						th:class="${#fields.hasErrors('primerApellido')} ? error"
+						th:errors="*{primerApellido}">Apellido Invalido</p>
 				</div>
 				<div>
 					<label for="segundoApellido">Segundo Apellido: </label> 
 					<input type="text" id="segundoApellido" name="segundoApellido" th:field="*{segundoApellido}">
+					<p th:if="${#fields.hasErrors('segundoApellido')}" 
+						th:class="${#fields.hasErrors('segundoApellido')} ? error"
+						th:errors="*{segundoApellido}">Nombre Invalido</p>
 				</div>
 				<div>
-					<label for="fechaAlta">Fecha de Matricualcion: </label> 
-					<input type="date" name="fechaAlta" id="fechaAlta" th:field="*{fechaMatriculacion}">
+					<label for="fechaMatriculacion">Fecha de Matricualcion: </label> 
+					<input type="date" name="fechaMatriculacion" id="fechaMatriculacion" th:field="*{fechaMatriculacion}">
+					<p th:if="${#fields.hasErrors('fechaMatriculacion')}" 
+						th:class="${#fields.hasErrors('fechaMatriculacion')} ? error"
+						th:errors="*{fechaMatriculacion}">Apellido Invalido</p>
 				</div>
 				<div>
 					<fieldset>
