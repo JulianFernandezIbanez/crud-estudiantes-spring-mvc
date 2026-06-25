@@ -26,6 +26,9 @@
 					<td th:text="${estudiante.segundoApellido}"></td>
 					<td th:text="${estudiante.fechaMatriculacion}"></td>
 					<td th:text="${estudiante.genero}"></td>
+					<td><a th:href="@{/estudiantes/detalles/}+${estudiante.id}">Detalles</a></td>
+					<td><a th:href="@{/estudiantes/update/}+${estudiante.id}">Modificar</a></td>
+					<td><a th:href="@{/estudiantes/delete/}+${estudiante.id}">Eliminar</a></td>
 				</tr>
 			</tbody>
 		</table>

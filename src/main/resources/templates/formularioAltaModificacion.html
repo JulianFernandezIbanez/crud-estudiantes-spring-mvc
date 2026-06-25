@@ -14,7 +14,7 @@
         <h1>Formulario de Alta o Modificacion</h1>
 		<fieldset>
 			<legend>Formulario</legend>
-			<form th:action="@{/estudiantes/persistir}" method="post" th:object="${estudiante}">
+			<form th:action="@{/estudiantes/persistir}" method="post" th:object="${estudiante}" enctype="multipart/form-data">
 				<input type="hidden" th:field="*{id}">
 				<div>
 					<label for="nombre">Nombre: </label> 
@@ -56,18 +56,26 @@
 				</div>
 				<div>
 					<label for="facultades">Facultades</label>
-					<select id="facultades" name="facultad">
+					<select id="facultades" name="facultad" th:field="*{facultad}">
 						<option value=""></option>
 						<option th:each="facultad : ${facultades}" th:value="${facultad.id}" th:text="${facultad.nombre}"></option>
 					</select>
 				</div>
 				<div>
 					<label for="telefonos">Telefonos: </label> 
-					<input type="text" id="telefonos" name="numerostlf" placeholder="Mas de 1 separado por ;">
+					<input type="text" id="telefonos" name="numerostlf" th:value="${telefonos}" placeholder="Mas de 1 separado por ;">
 				</div>
 				<div>
 					<label for="mail">Correos: </label> 
-					<input type="text" id="mail" name="mail" placeholder="Mas de 1 separado por ;">
+					<input type="text" id="mail" name="mail" th:value="${correos}" placeholder="Mas de 1 separado por ;">
+				</div>
+				<div>
+					<label for="file">Imagen del empleado</label>
+					<br>
+					<input type="file" id="file" name="file" title="Seleccione la imagen del empleado" th:value="${foto}">
+				</div>
+				<div th:if="${estudiante.foto != null}">
+					<img th:src ="@{/imagenes/} + ${estudiante.foto}">
 				</div>
 				<input type="submit" value="Alta/Modificacion">
 			</form>

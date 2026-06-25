@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.TelefonoDao;
 import com.example.entities.Telefono;
+
+import jakarta.transaction.Transactional;
+
 import com.example.entities.Estudiante;
 
 import lombok.RequiredArgsConstructor;
@@ -38,6 +41,7 @@ public class TelefonoServiceImpl implements TelefonoService {
     }
 
     @Override
+    @Transactional
     public void deleteByEstudiante(Estudiante estudiante) {
 
         telefonoDao.deleteByEstudiante(estudiante);
